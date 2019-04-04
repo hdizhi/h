@@ -1,8 +1,127 @@
-<html><head><title>H</title>
-</head>
-<body oncontextmenu="return false">
-<p style="text-align:center"><a href="http://www.luoboshequ.com/" target="_blank">萝卜社  http://www.luoboshequ.com//</a></p>
-  
-<p style="text-align:center"><a href="http://www.luoboshequ.com/" target="_blank">此页面为永久地址更新页</a></p>
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-clipboard="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HDZ网址导航</title>
+    <script>
+      (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){(function(global){var VueClipboard=require("./vue-clipboard.js");global.VueClipboard=VueClipboard;window.Vue&&global.Vue.use(VueClipboard)}).call(this,typeof global!=="undefined"?global:typeof self!=="undefined"?self:typeof window!=="undefined"?window:{})},{"./vue-clipboard.js":3}],2:[function(require,module,exports){!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.ClipboardJS=e():t.ClipboardJS=e()}(this,function(){return function(t){function e(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return t[o].call(r.exports,r,r.exports,e),r.l=!0,r.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,o){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:o})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=3)}([function(t,e,n){var o,r,i;!function(a,c){r=[t,n(7)],o=c,void 0!==(i="function"==typeof o?o.apply(e,r):o)&&(t.exports=i)}(0,function(t,e){"use strict";function n(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}var o=function(t){return t&&t.__esModule?t:{default:t}}(e),r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},i=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),a=function(){function t(e){n(this,t),this.resolveOptions(e),this.initSelection()}return i(t,[{key:"resolveOptions",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action=t.action,this.container=t.container,this.emitter=t.emitter,this.target=t.target,this.text=t.text,this.trigger=t.trigger,this.selectedText=""}},{key:"initSelection",value:function(){this.text?this.selectFake():this.target&&this.selectTarget()}},{key:"selectFake",value:function(){var t=this,e="rtl"==document.documentElement.getAttribute("dir");this.removeFake(),this.fakeHandlerCallback=function(){return t.removeFake()},this.fakeHandler=this.container.addEventListener("click",this.fakeHandlerCallback)||!0,this.fakeElem=document.createElement("textarea"),this.fakeElem.style.fontSize="12pt",this.fakeElem.style.border="0",this.fakeElem.style.padding="0",this.fakeElem.style.margin="0",this.fakeElem.style.position="absolute",this.fakeElem.style[e?"right":"left"]="-9999px";var n=window.pageYOffset||document.documentElement.scrollTop;this.fakeElem.style.top=n+"px",this.fakeElem.setAttribute("readonly",""),this.fakeElem.value=this.text,this.container.appendChild(this.fakeElem),this.selectedText=(0,o.default)(this.fakeElem),this.copyText()}},{key:"removeFake",value:function(){this.fakeHandler&&(this.container.removeEventListener("click",this.fakeHandlerCallback),this.fakeHandler=null,this.fakeHandlerCallback=null),this.fakeElem&&(this.container.removeChild(this.fakeElem),this.fakeElem=null)}},{key:"selectTarget",value:function(){this.selectedText=(0,o.default)(this.target),this.copyText()}},{key:"copyText",value:function(){var t=void 0;try{t=document.execCommand(this.action)}catch(e){t=!1}this.handleResult(t)}},{key:"handleResult",value:function(t){this.emitter.emit(t?"success":"error",{action:this.action,text:this.selectedText,trigger:this.trigger,clearSelection:this.clearSelection.bind(this)})}},{key:"clearSelection",value:function(){this.trigger&&this.trigger.focus(),window.getSelection().removeAllRanges()}},{key:"destroy",value:function(){this.removeFake()}},{key:"action",set:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"copy";if(this._action=t,"copy"!==this._action&&"cut"!==this._action)throw new Error('Invalid "action" value, use either "copy" or "cut"')},get:function(){return this._action}},{key:"target",set:function(t){if(void 0!==t){if(!t||"object"!==(void 0===t?"undefined":r(t))||1!==t.nodeType)throw new Error('Invalid "target" value, use a valid Element');if("copy"===this.action&&t.hasAttribute("disabled"))throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');if("cut"===this.action&&(t.hasAttribute("readonly")||t.hasAttribute("disabled")))throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');this._target=t}},get:function(){return this._target}}]),t}();t.exports=a})},function(t,e,n){function o(t,e,n){if(!t&&!e&&!n)throw new Error("Missing required arguments");if(!c.string(e))throw new TypeError("Second argument must be a String");if(!c.fn(n))throw new TypeError("Third argument must be a Function");if(c.node(t))return r(t,e,n);if(c.nodeList(t))return i(t,e,n);if(c.string(t))return a(t,e,n);throw new TypeError("First argument must be a String, HTMLElement, HTMLCollection, or NodeList")}function r(t,e,n){return t.addEventListener(e,n),{destroy:function(){t.removeEventListener(e,n)}}}function i(t,e,n){return Array.prototype.forEach.call(t,function(t){t.addEventListener(e,n)}),{destroy:function(){Array.prototype.forEach.call(t,function(t){t.removeEventListener(e,n)})}}}function a(t,e,n){return u(document.body,t,e,n)}var c=n(6),u=n(5);t.exports=o},function(t,e){function n(){}n.prototype={on:function(t,e,n){var o=this.e||(this.e={});return(o[t]||(o[t]=[])).push({fn:e,ctx:n}),this},once:function(t,e,n){function o(){r.off(t,o),e.apply(n,arguments)}var r=this;return o._=e,this.on(t,o,n)},emit:function(t){var e=[].slice.call(arguments,1),n=((this.e||(this.e={}))[t]||[]).slice(),o=0,r=n.length;for(o;o<r;o++)n[o].fn.apply(n[o].ctx,e);return this},off:function(t,e){var n=this.e||(this.e={}),o=n[t],r=[];if(o&&e)for(var i=0,a=o.length;i<a;i++)o[i].fn!==e&&o[i].fn._!==e&&r.push(o[i]);return r.length?n[t]=r:delete n[t],this}},t.exports=n},function(t,e,n){var o,r,i;!function(a,c){r=[t,n(0),n(2),n(1)],o=c,void 0!==(i="function"==typeof o?o.apply(e,r):o)&&(t.exports=i)}(0,function(t,e,n,o){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}function i(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function a(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function c(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}function u(t,e){var n="data-clipboard-"+t;if(e.hasAttribute(n))return e.getAttribute(n)}var l=r(e),s=r(n),f=r(o),d="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},h=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),p=function(t){function e(t,n){i(this,e);var o=a(this,(e.__proto__||Object.getPrototypeOf(e)).call(this));return o.resolveOptions(n),o.listenClick(t),o}return c(e,t),h(e,[{key:"resolveOptions",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action="function"==typeof t.action?t.action:this.defaultAction,this.target="function"==typeof t.target?t.target:this.defaultTarget,this.text="function"==typeof t.text?t.text:this.defaultText,this.container="object"===d(t.container)?t.container:document.body}},{key:"listenClick",value:function(t){var e=this;this.listener=(0,f.default)(t,"click",function(t){return e.onClick(t)})}},{key:"onClick",value:function(t){var e=t.delegateTarget||t.currentTarget;this.clipboardAction&&(this.clipboardAction=null),this.clipboardAction=new l.default({action:this.action(e),target:this.target(e),text:this.text(e),container:this.container,trigger:e,emitter:this})}},{key:"defaultAction",value:function(t){return u("action",t)}},{key:"defaultTarget",value:function(t){var e=u("target",t);if(e)return document.querySelector(e)}},{key:"defaultText",value:function(t){return u("text",t)}},{key:"destroy",value:function(){this.listener.destroy(),this.clipboardAction&&(this.clipboardAction.destroy(),this.clipboardAction=null)}}],[{key:"isSupported",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:["copy","cut"],e="string"==typeof t?[t]:t,n=!!document.queryCommandSupported;return e.forEach(function(t){n=n&&!!document.queryCommandSupported(t)}),n}}]),e}(s.default);t.exports=p})},function(t,e){function n(t,e){for(;t&&t.nodeType!==o;){if("function"==typeof t.matches&&t.matches(e))return t;t=t.parentNode}}var o=9;if("undefined"!=typeof Element&&!Element.prototype.matches){var r=Element.prototype;r.matches=r.matchesSelector||r.mozMatchesSelector||r.msMatchesSelector||r.oMatchesSelector||r.webkitMatchesSelector}t.exports=n},function(t,e,n){function o(t,e,n,o,r){var a=i.apply(this,arguments);return t.addEventListener(n,a,r),{destroy:function(){t.removeEventListener(n,a,r)}}}function r(t,e,n,r,i){return"function"==typeof t.addEventListener?o.apply(null,arguments):"function"==typeof n?o.bind(null,document).apply(null,arguments):("string"==typeof t&&(t=document.querySelectorAll(t)),Array.prototype.map.call(t,function(t){return o(t,e,n,r,i)}))}function i(t,e,n,o){return function(n){n.delegateTarget=a(n.target,e),n.delegateTarget&&o.call(t,n)}}var a=n(4);t.exports=r},function(t,e){e.node=function(t){return void 0!==t&&t instanceof HTMLElement&&1===t.nodeType},e.nodeList=function(t){var n=Object.prototype.toString.call(t);return void 0!==t&&("[object NodeList]"===n||"[object HTMLCollection]"===n)&&"length"in t&&(0===t.length||e.node(t[0]))},e.string=function(t){return"string"==typeof t||t instanceof String},e.fn=function(t){return"[object Function]"===Object.prototype.toString.call(t)}},function(t,e){function n(t){var e;if("SELECT"===t.nodeName)t.focus(),e=t.value;else if("INPUT"===t.nodeName||"TEXTAREA"===t.nodeName){var n=t.hasAttribute("readonly");n||t.setAttribute("readonly",""),t.select(),t.setSelectionRange(0,t.value.length),n||t.removeAttribute("readonly"),e=t.value}else{t.hasAttribute("contenteditable")&&t.focus();var o=window.getSelection(),r=document.createRange();r.selectNodeContents(t),o.removeAllRanges(),o.addRange(r),e=o.toString()}return e}t.exports=n}])})},{}],3:[function(require,module,exports){var Clipboard=require("clipboard/dist/clipboard.min.js");var VueClipboardConfig={autoSetContainer:false,appendToBody:true};var VueClipboard={install:function(Vue){Vue.prototype.$clipboardConfig=VueClipboardConfig;Vue.prototype.$copyText=function(text,container){return new Promise(function(resolve,reject){var fakeElement=document.createElement("button");var clipboard=new Clipboard(fakeElement,{text:function(){return text},action:function(){return"copy"},container:typeof container==="object"?container:document.body});clipboard.on("success",function(e){clipboard.destroy();resolve(e)});clipboard.on("error",function(e){clipboard.destroy();reject(e)});if(VueClipboardConfig.appendToBody)document.body.appendChild(fakeElement);fakeElement.click();if(VueClipboardConfig.appendToBody)document.body.removeChild(fakeElement)})};Vue.directive("clipboard",{bind:function(el,binding,vnode){if(binding.arg==="success"){el._vClipboard_success=binding.value}else if(binding.arg==="error"){el._vClipboard_error=binding.value}else{var clipboard=new Clipboard(el,{text:function(){return binding.value},action:function(){return binding.arg==="cut"?"cut":"copy"},container:VueClipboardConfig.autoSetContainer?el:undefined});clipboard.on("success",function(e){var callback=el._vClipboard_success;callback&&callback(e)});clipboard.on("error",function(e){var callback=el._vClipboard_error;callback&&callback(e)});el._vClipboard=clipboard}},update:function(el,binding){if(binding.arg==="success"){el._vClipboard_success=binding.value}else if(binding.arg==="error"){el._vClipboard_error=binding.value}else{el._vClipboard.text=function(){return binding.value};el._vClipboard.action=function(){return binding.arg==="cut"?"cut":"copy"}}},unbind:function(el,binding){if(binding.arg==="success"){delete el._vClipboard_success}else if(binding.arg==="error"){delete el._vClipboard_error}else{el._vClipboard.destroy();delete el._vClipboard}}})},config:VueClipboardConfig};if(typeof exports==="object"){module.exports=VueClipboard}else if(typeof define==="function"&&define.amd){define([],function(){return VueClipboard})}},{"clipboard/dist/clipboard.min.js":2}]},{},[1]);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <style>
+        h1, h2 {
+            font-weight: normal;
+        }
 
-</body></html>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #00a1d6;
+        }
+
+        a:hover {
+            color: #fb7299;
+        }
+
+        #app {
+            font-family: 'Avenir', Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <img :src="logoSrc" alt="">
+    <h1>{{ b64_to_utf8(title) }}</h1>
+    <h2>{{ b64_to_utf8(website) }}</h2>
+
+    <div v-if="isVx">
+        <span>检测到您使用的是微信浏览器，建议您复制链接地址，从其他浏览器打开。</span>
+        <ul>
+            <li v-for="(item, index) in allWebSite">
+                <label>
+                    <input type="text" :value="item.siteUrl" readonly />
+                </label>
+                <button href="#"
+                        v-clipboard:copy="allWebSite[index]['siteUrl']"
+                        v-clipboard:success="copied" v-clipboard:error="onCpError">
+                    点我复制
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div v-if="!isVx">
+        <ul>
+            <li v-for="(item, index) in allWebSite">
+                <a v-bind:href="item.siteUrl">
+                    最新地址 - {{ index + 1 }}：{{ item.siteUrl}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+  Vue.use(VueClipboard)
+  const app = new Vue({
+    el: '#app',
+    data: {
+      logoSrc: `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAACcQAAAnEAGUaVEZAAAAB3RJTUUH4wEaEBAMAZKgzQAAFK9JREFUeNrtnXt01NW1xz+/eSaTZDLJJCFPIBjkjShYEazltgVatYguudX2qhWWSrW2te3i3i7rbWupfayqrdaiffq6tvW2+EBFkAsUAXkGCAQCJCEESAjk/Z7JzJz7x/7NM5MYTMgkku9av7Vm5veb3/zO3ufsvc/e33MGRjCCEYxgBJcqtFg/QBQkAvOAOUAK0AbsATYAtfozTwfmA/mAAkqB9cDhWD/8cMck4A2gAxGs/+gCtgI3Aj8EqiLOK6AS+C4QF+tGDFeMAz6ku2BDjxZEGT2ddwP/BRhi3ZjhBgPwG8KFWQFsAo7SszK2ATuA9pDPa4HrYt2g4YaJwGmCQtwCTAOsiJ1/jXDh1wJ3AglAEvAA0Bxy/olYN2i44QbAhQivFVgYcX4WUEdQwM9HnDcDb4ac38gw8QWxtpVGRHhJIc/SDpyJuO4UcD7k/cGI813A2Yj7DsUIrxtMMfrdfOBmYDYwCrARFFgacBfwFjIa6oFkwgXqibjfWGBuyPuGKNeMABHiEuAIvUc7HmQk1AIngWOEO9q/Av8BfBX4OmJyQr/7tVg3dKjiJsSUqAE4fIA3yud1wDKgAMgA4mPd6N4wmHYyFTErflPhBXYBB5DZ7xggC4l8EhDBmblwM6kQh96gHzVIKFsMHNePBsS8dQ1i+6NiMBXwJeB/EQEr4GngMcTGa4jQkxGhO/TXqcAE4HLgFv1zdMF5AAvicPuKDmSEnEMc+26gDDFzJ/RncQ+iTAZVAb8AVuivTwHz5s1bWH7DDbfidruor6+jsrKcysoTVFSU0tHRTltbKz6fD8SUbEZSFQC/Bv4J5CJ5oQwgD3Hgo5ER1dcw1Ifkm04hStiJjJgyoByZX3gvllAGUwGrgOX664OTJ0+/Ydmyb2Z4PJ5soJOg2ahBzINXKdy7dn3A6tX/k4ZMzvwK+LrVan2uq6vLryCQkWVDFJGBKGc0cBWQjURKycio+Sh4EcH7lXAQUUwJEu4OmOkazDD0XOBHTaa86677/F+UUlcCdr3BPl3wNboi2jSNM7Nnf6Y5N3ds3e9//6S9s7MDAIvFGtfZ2Wn4+c9X+QwGAz6fl9bWFteZM5Wu/fv3NJSVldDS0uz/ObOumDG6IsYAU4CpBP1OpKM2IpnYWfrx70gnqUQismIkDXIImbN8bLM1mCPgc8hsNQFg6tQrmT//JlJT0zCbLRgMBkBDC3kipRSaptHc3MTzzz/BuXMy11qwYFHpggWLjnu9nipdYfuRnnkOaCJgyxXt7e1UV59m9+7tHD9+mNbWFv/t45GRko+MjsnATGTkjEJGS2/oQtInh4EiZIQe0z/rs0IGUwEJwN+QUBSApCQ7TmcGKSmpWK1xWK1xOJ3ppKQ4sVgs2GyJWK1WXC4XL720ivPnawC45ZavcN11n8Pr9fgV5dEb3awroASx6UeROUcNUAeqDjS31+ulubmRwsKdFBXtpaamCqWUXykOXSnTgauRkZKrK6s3i9GJdIC9ujK2E4y4hoQC0Bv0MhLZ9AiTyYTBYMBqjcNkMmO1Wqmvr8Xtlo41Y8bVzJw5m5SUNKxWK/HxCVgsFjRN05uk/AJFKdWJZE4bkN5ajjjbo7qAakFr9fk8NDU1Uly8n337dlFTU4XH4zEopRKBTGAGkiC8QldOFr37kyZE+a8CL+nvY64AgE8BPwE+TT8mSSaTKSD41NQ0UlPTSEpKJjnZERhFcXHxWCxWzGYzoKGUL/QW/pn2CcSml+kCOwLU+Xy0ejxudfbsaXbu3EpJyUHa2lpRSll14V+BOPiZ+ut0JBCIhNKV8DDh+ayYKQDEvl4DfAZwEgwf0xCnaUd6l4WPkTC0WCzExydgsyWQlGQnKyuH6dNnkZs7ptu1BoMBpQIjxm9GqhAHuwfxLyeARk3T3I2NDezfv4vt2zfR3NyEz+eLA3KQlPpnkI51OeLEQ+X7DPAdInJUQyVjaEJi90Rd6OlI5JKlN2w0krxz6Nf7U9fWvrYhKyuHe+75Bg5HasC5u1ydVFefxmZLJD19VE9fbdQVUo5EPocR83VS07TOhoZ69uzZzo4dW2htbUYp5UCc+vXAQ0hKBGQCeBNSQBpyCvgoRE7EnkDSGuOR6CUd6YXpiLLiibDPZrOlaenSb7xeUDAx0efz5Xm93svWrXvTuX37Zs1uT2bJkrsYN26CbqbEXHm9HoxGE0ajTLb1kdKFOPUjSJ16v/76pFLKferUCTZtWsexY4fxeLq+CLyCzOgBHgEeH44KyEQynn4FPIBM7ELbYUVM1xjElOUhdeYrkFnxa8Dv//CHf6KUz7Z+/Zqr33rr76+43a4sgLlz/+3M4sV3GHw+leZydZg3b15HRUUZDkcK2dl55OSMIS0tg8TERIxGM5oWppCzyGStUO8oB1esuP+8pmkWhM3hL5Gu0p992CvgG8Czffyu30x1Ajz33N/Ztm0jL7/8vBH4KXAfcN5uT/72ypXPVPh8vvwNG965ae3a1fd7vd6A/zGbLaSkOElPzyAzM4exYwtwOtOx2x1YreJ7dYV0AMc0zVBUU1O18amnHnvI5/Ndpd/mt4hZuqQU0BvikJC4WSl1YuXKZ9i9eytvvfXaTOA9ZCRFhclkJiEhgczMHEaPzic/fzxOZwZ2ezImkwmPp4utWzd61q59XfP5fP6E4TcRZxy8T6wlG2N0IulwfQ4RwAHgXmABcCViytIIicg8ni6amhppamrk6NFizGYLdnsyubljcDhSaWioo6TkkCkkV3USIY8NS2Qi0Ye/6PLgIP62A8kd3Qn8HFiHpBt64ydFHi7g29FufqmPgL6gUT+K9fc2JKl3FTI6ZiIKSkfmMJGoRaK2VdFuPqKAC0c7wkUtRSIrGxICT0U4rZ9CFNSAzBteRfJCKtrNRhTQf7QTLHW+jpgsO8FUR68YUcDAo1E/+oRYE7MueYwoIMYYSBOkIc4nE2EfnEYKJCPoBQOlgNHIFPtmZMLShSSongVWcxFZBcMdA6GAHOCPyJKhUGQgMXIq3dnMI9AxED5gOSHCN5rCbpmIpGCnxrqhQxX9VcAoxOwAMGlGLr966W7uWzEfa1xgUpgXes0IwtFfBWQijAEAbr17NovvuIZ7V8ynYHJm6HV5sW7oUMXH8QFWhBVQgFSkAvcwmY34UHS0uWlrdYV+pyPWDR2quFAFTAJ+hNh8R+TJiuPnUCiOHDhNdWWADuNFaH0jiIILUUA+8Cfg2p4uOLCzgpbmDg7srMDVGaBPViFkpRFEwYX4gAcIEX6Cw0JCcjgv6cSxGg7srKBo98nQjw8gxYgRREFfR4AT4XYCMP5Tadz+6Ax8PsU/flbE0R3CN2qqb+ePv9pASVHYGrvdDDLnfjihryPAiaQZALhm0WgmXpvBxGsz+MqPryR9dELgwq3vH6GuJpCB6ERy4qEwIY78QhZWfGLR2wgwI073SoTqEaDdVZc242r3YDQbyJ+eysL7JvDqD/fh8ypQYZWHeoSONwFZEelf7ZKA5ImOIkTanYiZuuRWNvakgHzgUWQBdTfK2NbXKjBbjXxx+URSc2xct2QshevOcPiDmshLExEqxmUIyy0aC8OHMJm3AH8GPuASyh1FMwPpuiBuQwTYDd4uH6V76yjfV0+Cw0L2+GQS7Bb2rT+D1xNWebMioyeJnikwGhLSXgEsRnijRciyIT8Sgbv1ZwN4F/Etn0g8REhFPy7erBLtccpiMUWt+FttJjXrhlx1/zOz1dhpKb0xA1qRiGgj8D6yEUcx4icir12HjBo/YsmKuKiIZoL85CcmTMvmu4/fjMOZQHNDO6WHq9m2oYSi3ZU0N7ShFLjaPex59zRFG6sxGKN28kpkYfV7iMBbQs6lILz72/TDrn++AEllL6P7tgWfePwOvafdtnSOKlerVLlapU6oVeqw62n1ZuH31X0r5qskR/xHcWHcwIvIooaPgglhDu+LuMefCS4lumRGQAB7t5Wx4e0iklNsHNxbyc5Nxzi0t5LGujY6O3pdKNiBsICfIEoeSK27LfhGg0nL1nuOVK5c94WrH2/aXly7qqXDM0U/eydS2Hk51oK6WIhmMx5EIhcA4hNkAV1bS2df7+lDVsCsJCKsDBO8hLnTES7NJCAfizHpz2vKcr7+TGG2uytA6asH/hNhlvkVM1Dc0Jgj2gj4G2KDFwF0tEWdxLoQzksJYhI+S3BStw5ZSB1d+JrSUNr1BLmXEtkYNI6VN/LqxkpChA9SUXuEHiKy4Y5oCqhD8j5VwK1IiKiQsLAU+BcSwRwDqpH5wuf179YDPyOCFxPS85NQ2sMIS9gZuMCgcfxUC0uf3MO24rpozzk21oK6WOjJB5xBhPQsUvMFWRVSiQjZDyfSi/3YgmzAEUCI8FOBXwL3EJoCMWgcOdnM8t/sDRP+3ClOQGNb8UeSy4Y1essFdSEL1dbpx37ChQ+SWhgf8v4dxDwFMPW+9VDgiEeYxcvCflPTKD/TyvLfFLLlYFDQc6c4eeF7V/Pr5VeQ7RzSu830G/0tSeYi5FSQaKc04vzk4pPNN364puw7aN03UVI+xZOrj7HlYHD15vXT0vjLd6+mIDeJWRNS+P6XJ2A2dXtMH58Q9FcBqQTTGe2Erwq/EVlI98Zjrxz5UUOL2xyIuTTAINsSxJmD2ZDrp6Xz3LdmMj4vCXyS0lj2hXyWfDo38ncz+YSgv7yg0DDWSzDyuRF4Dr1gX1jaQHVdJyl22SqoqbWLhlY32anxfO+2y0EDl9vLw7dezricxIDwAeIsRi7LToj83TuR7WqKYi3A/qK/CmhDIiQNMUV2ZMvJgPABbp+XR0G2RJFnznew/OlCCksbuWNeHo/fM5Vf3TsdpUAzaEHha+DxKJ785zGeWn088nfzkdr0XUiOadiivyboNEGna0WcbED4mgb3fjGfx+6agsViAA0OVTSxdvdZquo6+OvmU1TVdwbMESoofK9X8cybpfzolcO0dkQtE9wEfDnWAuwv+quAcoLJMjOigLH6e8+XZmef/sWyaSo5yRLI4uSm2xiXlYDRoHFVgYOURHNQ8BAm/EdfLKbDJaWBxHgTDy66jHFZAXNkRjbrvjzWQuwP+lsWbEaymTOinPvTxl9evy8jJX5OQMAK0pOtfO7KDL50TTZLF44lPcUaLKGFCP8HLxyirVOEb7Ma+cndU/nxXZPRgPcLz/lv6d8g4z2GaWTU3xHgQzbia4/4/E/A97IzbB1hvRsxS1Pyk1l4TSY56bbuwn+jlB+8UBwm/JVfm8o3FxdgMBhYujCfhbPCinS3Ez4ZHFYYCHLuZsLXvyr0LcfoPnET+BR4VVSb/4MXi2nrFJtviwsK32jUQCmSEs2sWDKBNHuAEmNHtqzvcVH1UMZAMBO6kAnYAiRvpCEbM6XfOienbpQzfj6qF0WHCP+RFw7RHqXni/CDX8lNs7G/rInikwH2xWhkm5kPYy3QC8VAUUOq9WMewngwArP+b9+5sXMmOZOz022mqIs0deE//YY43IDw43oWPhr844MzPPdOeWh0pCGr2d+nDysThxIGkptTjLAb5qIX4etb3Okb9583pSdbmZiXJGsHojjcR18Mcbhx4nC/1YPwX/vXaR56dh81Da7I309FTOp79LAmdyhioMlRhxAe6DR0Ild9i5u1u89yvsnN9LHJ2JPEdgcc7ouHujncqMJHF/7v9nGuUYRvMRlw2i2B7yOF/A8ZRlTIi8FOq0Ac8yhktytDl1ex62g9O0rqGZMWT1ZqPL9bU6Y73D6YHYPG1kO1LH1iDzW68I0GjYdvvZzlN41j/Z4aOqWIE4+YwHcYJiSvi0UPrENS2E0Is84GcOp8B2t3n2XLwVpe3HAyGO304nABMBhYu6uav20+JQ9t0PjWLeN57K4pTBljp7SqlX1ljf6rxyH0l5JYC7cvuJj8TDeyR8IBxDTkAbS7vJRVt+H2yLzJbjOz8p4pPHRzD8IH0MBmMXKkshmvDx5cVMB/f3UyCfEmDEaNcZkJvL2zmuZ2D8gMeRSwhmGwMGQwCLJlCJPNiBTVw7Z2vKoghUfumEiqIy4sCxoGBekOK4uuzeb2eXksnpON1WIIpDdGOeI42+AKrajlIWyKIZ8tHSyGcisSIh5D/EJgKltV18mOkjoyki1clpWIITRSikC81UiK3dp9UmHQyHHG8c6uapraukCioVRkjbKLIYzBpIgrpFeuRdLgkwGLAk7XdvD2zmpOnmtnQk4iaY643u+iQfgm0zJCWjo8bDoQqK5lIaHxoUFs4wUjFhz9JmQ0HEQyp3kAbo+PwtJG3i+UTdbH5yQRH2/qPho0jdZ2D+caXdisJgwGXREGjZzUON7ddZaGVjeIkh3IKIj5P2X0hFgtkvAhawPeRpz1BPRd1eua3azfW8OeY/VkOuIYMyohaJYMGhXVrTzw232s/OsRPF7F7ElODJo471S7hdO17Ww/HPAFo5C1B6UX/oiDg1ivUmlDOEbbEIpLAWBQCsrPtrFmRzUnzraRlxZPVlo85VWtLHtqL+/uOktTWxelVW0suT4Xe4KemDNoZKXEsWZHICKyIAp+myE6O461Avw4hUyeKpFyYwaAq0vM0ru7qzlT28Ef36tg477A/0Bw7WQnX/3saImIABSkJVs5eKKJA+WBzcrTkShsSOaIhooCQHpqIeKkPYhZsgE0t3v48HAd5dXBNRuzJzlZ9dBV4TUFQDMZsJoMrN52Bo9XgaSrSxiiCzqG4oZNFQgZdzGyKV5ksSdQzrRZjQGKSwA+xbWTnMwY5wj9ylyGVmcLtiXWD9AD/H/QvAYJJbMQiqQBpI6z53gDa3efpbHFjTPJQprdgmYygNKIsxrZX97IrqOBepAVqdwNOQbFUFWAH15k7vAmMonzK0IDqG12s+nAed78sIqiE00oryIlyUxivImW9i5e31blL7p5kdF0/mM9xQgCGAXcj+zB323nWovJoKaOTVa3z8tTN8/JViaj5j9Xj2y0OoIBghP5w85/IWblo5ZLHSeEKDaCgYMd+ALyJwkVRP9zTx/CohuSO8UPyYf6GDAhhfm5CEfJRjBrVIQoqOXj3nwEIxjBCEYwgouB/wcSl5I3fQ0Z2gAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOS0wMS0yNlQxNjoxNjoxMiswODowMOumzAAAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTktMDEtMjZUMTY6MTY6MTIrMDg6MDCa+3S8AAAAQ3RFWHRzb2Z0d2FyZQAvdXNyL2xvY2FsL2ltYWdlbWFnaWNrL3NoYXJlL2RvYy9JbWFnZU1hZ2ljay03Ly9pbmRleC5odG1svbV5CgAAABh0RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABh0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQANzc5TYH54QAAABd0RVh0VGh1bWI6OkltYWdlOjpXaWR0aAA3NznecKm8AAAAGXRFWHRUaHVtYjo6TWltZXR5cGUAaW1hZ2UvcG5nP7JWTgAAABd0RVh0VGh1bWI6Ok1UaW1lADE1NDg0OTA1NzK9IhZcAAAAEnRFWHRUaHVtYjo6U2l6ZQAzNzgzMkLGD1sWAAAAYnRFWHRUaHVtYjo6VVJJAGZpbGU6Ly8vaG9tZS93d3dyb290L25ld3NpdGUvd3d3LmVhc3lpY29uLm5ldC9jZG4taW1nLmVhc3lpY29uLmNuL2ZpbGVzLzEyMi8xMjI5OTc2LnBuZ127ExYAAAAASUVORK5CYII=`,
+      title: 'aGR6IC0gSOWcsOWdgOacgOaWsOWvvOiIqumTvuaOpQ==',
+      website: '6JCd5Y2c56S+5Yy6',
+      allWebSite: [
+        { siteName: '6JCd5Y2c56S+5Yy6', siteUrl: 'http://luoporn.com'},
+        { siteName: '6JCd5Y2c56S+5Yy6', siteUrl: 'http://luoboshequ.com' },
+      ]
+    },
+    methods: {
+      utf8_to_b64 (str) {
+        return window.btoa(unescape(encodeURIComponent(str)))
+      },
+      b64_to_utf8 (str) {
+        return decodeURIComponent(escape(window.atob(str)))
+      },
+      copied (e) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'center',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        Toast.fire({
+          type: 'success',
+          title: "复制成功"
+        })
+      },
+      onCpError (e) {
+        Swal.fire({
+          type: 'error',
+          title: '复制失败',
+          text: '您当前系统不支持点击复制操作,请手动复制',
+          timer: 1500
+        })
+      }
+    },
+    computed: {
+      isVx () {
+        const ua = window.navigator.userAgent.toLowerCase()
+        return ua.match(/MicroMessenger/i) == 'micromessenger'
+      }
+    }
+  })
+</script>
+</body>
+</html>
